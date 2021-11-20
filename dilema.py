@@ -2,18 +2,8 @@
 from types import MethodType as method
 from __init__ import loadStrategies
 
-def strList(string: str, extra: int = 1) -> str:
-	largestName = ''
-	result = ''
-	for name in [x.split(': ')[0] for x in string.split('\n')]:
-		if len(name) > len(largestName):
-			largestName = name
-
-	for name in [x.split(': ') for x in string.split('\n')]:
-		result += (name[0]+':'+' '*((len(largestName)-len(name[0])) + extra))+name[1]+'\n'
-	
-	del largestName
-	return result[:-1:]
+def align(string: str) -> str:
+	return string.replace(': ', ':\t')
 
 class Tournament:
 	class Battle:
